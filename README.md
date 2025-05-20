@@ -39,6 +39,7 @@ Also the main purpose of this files is to display the achievment on the elaborat
 ## Metrics (Sample)
 
 Metric | Value (example) 
+
 R²     | 0.51            
 MAE    | ~0.19           
 MSE    | ~0.53           
