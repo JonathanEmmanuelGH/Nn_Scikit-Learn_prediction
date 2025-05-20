@@ -19,10 +19,10 @@ from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, LeakyReLU
 
-# ------------------- Load and Prepare Data -------------------
+# Load and Prepare Data
 df = pd.read_parquet('jonathan_dataframe.parquet')
 
-# Date features
+# + Date features
 df['Date'] = pd.to_datetime(df['Date'])
 df['Date_month'] = df['Date'].dt.month
 df['Date_dow'] = df['Date'].dt.dayofweek
@@ -32,7 +32,7 @@ df['cos_month'] = np.cos(2 * np.pi * df['Date_month'] / 12)
 df['sin_dow'] = np.sin(2 * np.pi * df['Date_dow'] / 7)
 df['cos_dow'] = np.sin(2 * np.pi * df['Date_dow'] / 7)
 
-# ------------------- Feature Selection -------------------
+# Feature Selection
 cate_var = ['id_a', 'ag', 'a1', 'a2', 'a3', 'a4', 'a5']
 bin_var = ['Date_weeknd']
 cycl_var = ['sin_month', 'cos_month', 'sin_dow', 'cos_dow']
@@ -47,14 +47,14 @@ preprocessor = ColumnTransformer([
 X = preprocessor.fit_transform(df)
 y = df['a6'].values
 
-# ------------------- Train/Test Split & Scaling -------------------
+# Train/Test Split & Scaling
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.15, random_state=12)
 
 y_scaler = StandardScaler()
 y_train_scaled = y_scaler.fit_transform(y_train.reshape(-1, 1)).flatten()
 y_test_scaled = y_scaler.transform(y_test.reshape(-1, 1)).flatten()
 
-# ------------------- Neural Network Model -------------------
+# Neural Network Model
 Model_1LR = Sequential()
 Model_1LR.add(Dense(32, input_shape=(X_train.shape[1],)))
 Model_1LR.add(LeakyReLU(alpha=0.01))
@@ -64,10 +64,10 @@ Model_1LR.add(Dense(1, activation='linear'))
 
 Model_1LR.compile(optimizer='adam', loss='mean_squared_error', metrics=['mae'])
 
-# ------------------- Train Model -------------------
+# Train Model
 Model_1LR.fit(X_train, y_train_scaled, epochs=15, batch_size=40)
 
-# ------------------- Evaluate Model -------------------
+# Evaluate Model
 loss, MAE = Model_1LR.evaluate(X_test, y_test_scaled)
 print(f'\nModel Evaluation:')
 print(f'Loss (MSE scaled): {loss:.4f}')
@@ -81,9 +81,9 @@ print(f'R² Score: {r2_score(y_test, y_pred):.3f}')
 print(f'MAE: {mean_absolute_error(y_test, y_pred):.3f}')
 print(f'MSE: {mean_squared_error(y_test, y_pred):.3f}')
 
-# ------------------- Visualization -------------------
+# Visualization
 
-# --- Orders per day ---
+# + Orders per day
 df_sorted = df.sort_values(by='Date')
 df_count_total = df_sorted['Date'].value_counts().sort_index()
 
@@ -96,7 +96,7 @@ plt.grid(True)
 plt.tight_layout()
 plt.show()
 
-# --- Average orders per month ---
+# + Average orders per month
 n_years = df['Date'].dt.year.nunique()
 avg_order_month = df.groupby('Date_month').size() / n_years
 
@@ -110,7 +110,7 @@ plt.grid(True)
 plt.tight_layout()
 plt.show()
 
-# --- True vs Predicted (filtered) ---
+# + True vs Predicted (filtered)
 residuals = y_test - y_pred
 mask = (y_test < 4000) & (y_pred < 4000)
 y_test_notoutliers = y_test[mask]
@@ -128,7 +128,7 @@ plt.grid(True)
 plt.tight_layout()
 plt.show()
 
-# --- Residual Plot ---
+# + Residual Plot
 plt.figure(figsize=(8, 6))
 plt.scatter(y_test_notoutliers, residuals_notoutliers, alpha=0.3)
 plt.hlines(0, xmin=y_test_notoutliers.min(), xmax=y_test_notoutliers.max(), colors='r', linestyles='--')
