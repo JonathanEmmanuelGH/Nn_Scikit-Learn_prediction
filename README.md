@@ -52,5 +52,5 @@ MSE    | ~0.53
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/JonathanEmmanuelGH/nn_scikit-learn_prediction.git
-   cd nn-scikit-learn-prediction
+   git clone https://github.com/JonathanEmmanuelGH//Nn_Scikit-Learn_prediction.git
+   cd Nn-Scikit-Learn-prediction
