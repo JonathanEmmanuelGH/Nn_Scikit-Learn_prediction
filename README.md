@@ -4,7 +4,6 @@ This project demonstrates the use of a shallow neural network (LeakyReLU + Dense
 Due to nda meassures the database has been cleaned and censored previously, the information displayed is only an altered information of the real one.
 Also the main purpose of this files is to display the achievment on the elaboration of algorithms beyond the results. Now talking about them it is obvious that this is not the best algorithm to work on the database, if you like to see different approach please access to the different repositories in this profile.
 
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 ## Project Structure
 
@@ -13,7 +12,6 @@ Also the main purpose of this files is to display the achievment on the elaborat
 - `requirements.txt` – all required dependencies
 - `README.md` – project documentation
 
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 ## Model Summary
 
@@ -25,7 +23,6 @@ Also the main purpose of this files is to display the achievment on the elaborat
   - Binary flags
   - Sine/Cosine cyclical encoding for date components
 
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 ## Visualizations
 
@@ -38,9 +35,8 @@ Also the main purpose of this files is to display the achievment on the elaborat
 - **Residual Plot**  
   _Error analysis for filtered predictions_
 
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-## 🧪 Metrics (Sample)
+## Metrics (Sample)
 
 Metric | Value (example) 
 R²     | 0.51            
@@ -50,7 +46,6 @@ MSE    | ~0.53
 > _Note: these depend on the input dataset and training configuration._
 > Due to results of this code it seems obvious that this is not the best model for use in the database
 
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 ## How to Run
 
