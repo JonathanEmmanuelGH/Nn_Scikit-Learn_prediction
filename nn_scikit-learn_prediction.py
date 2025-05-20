@@ -1,6 +1,6 @@
 # nn_scikit-learn_prediction.py
 # ===============================================================================
-# Title: Neural NEtwork for Order PRediction and Descriptive ANalysis
+# Title: Neural NEtwork for Order PRediction and Descriptive Analysis
 # Author: Jonathan Emmanuel García Hernández
 # Created for: Apprenticeship project addapted to Github Portfolio Showcase
 # Descrpition: Predicts target variable using a 3 capes neural network
